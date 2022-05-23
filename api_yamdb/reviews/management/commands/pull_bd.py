@@ -3,13 +3,13 @@ import sqlite3
 
 from django.core.management.base import BaseCommand
 
+DELIMITER = ','  # Разделитель в файле с данными
+
 
 class Command(BaseCommand):
     help = 'Заполняет базу данных'
 
     def handle(self, *args, **options):
-
-        DELIMITER = ','  # Разделитель в файле с данными
 
         # Подключаемся к БД в файле db.sqlite3
         con = sqlite3.connect('db.sqlite3')

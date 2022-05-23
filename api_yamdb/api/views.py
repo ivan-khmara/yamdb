@@ -1,20 +1,19 @@
-from api_yamdb.settings import EMAIL_ADRESS
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
-
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import (filters, mixins, permissions, status,
-                            viewsets)
+from rest_framework import filters, mixins, permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from reviews.models import Category, Genre, Review, Title, User
-# from users.models import User
 
+from api_yamdb.settings import EMAIL_ADRESS
+
+from .filters import TitleFilter
 from .paginations import CommentsSetPagination, ReviewsSetPagination
 from .permissions import (AdminModeratorAuthorOrReadOnly, IsAdminOnly,
                           IsAdminOrReadOnly)
@@ -23,7 +22,6 @@ from .serializers import (CategorySerializer, CommentsSerializer,
                           GetTokenSerializer, ReviewSerializer,
                           TitlesSerializer, UserForAdminSerializer,
                           UserSerializer)
-from .filters import TitleFilter
 
 
 class CreateDestroyListViewSet(mixins.DestroyModelMixin,
