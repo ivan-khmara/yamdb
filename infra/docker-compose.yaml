@@ -9,6 +9,7 @@ services:
       - ./.env
 
   web:
+    image: ikhmara/api_yamdb
     build: ../api_yamdb
     restart: always
     volumes:
