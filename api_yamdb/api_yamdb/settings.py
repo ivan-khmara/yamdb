@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default=utils.get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [0.0.0.0]
+ALLOWED_HOSTS = ['*']
 
 EMPTY_VALUE_DISPLAY = '-пусто-'
 
